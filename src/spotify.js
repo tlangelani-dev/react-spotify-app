@@ -16,12 +16,29 @@ const scopes = [
 
 const loginUrl = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join('&20')}&response_type=token&show_dialog=true`;
 
-const getTokenFromResponse = () => {
-    return window.location.hash;
+const getTokenFromUrl = () => {
+    if (window.location.hash === '') {
+        return null;
+    }
+
+    let hash = window.location.hash;
+    hash = hash.substring(1);
+    hash = hash.split('&');
+    hash = hash[0];
+    return hash.substring(13);
+
+    // return window.location.hash
+    //     .substring(1)
+    //     .split('&')
+    //     .reduce((initial, item) => {
+    //         let parts = item.split('=');
+    //         initial[parts[0]] = decodeURIComponent(parts[1]);
+    //         return initial;
+    //     }, {});
 };
 
 export {
     authEndpoint,
     loginUrl,
-    getTokenFromResponse
+    getTokenFromUrl
 };
