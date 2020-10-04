@@ -1,11 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, { StrictMode } from 'react';
+import { render } from 'react-dom';
 import './scss/global.scss';
 import App from './components/App';
+import { DataLayer } from './DataLayer';
+import reducer, { initialState } from './reducer';
 
-ReactDOM.render(
-    <React.StrictMode>
-        <App />
-    </React.StrictMode>,
+render(
+    <StrictMode>
+        <DataLayer initialState={initialState} reducer={reducer}>
+            <App />
+        </DataLayer>
+    </StrictMode>,
     document.getElementById('root')
 );

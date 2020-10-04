@@ -1,11 +1,11 @@
 import React from 'react';
 
-const User = () => {
+const Player = () => {
     return (
-        <div className="user">
+        <div className="player">
             <h2>Welcome to Spotify</h2>
         </div>
     )
 }
 
-export default User;
+export default Player;
